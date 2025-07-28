@@ -1,18 +1,115 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Portfolio</title>
-  <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Portfolio Futuriste</title>
+  <style>
+    body, html {
+      margin: 0;
+      padding: 0;
+      height: 100vh;
+      overflow: hidden;
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #0a0f18;
+      color: #aad4ff;
+    }
+
+    canvas#background {
+      position: fixed;
+      top: 0;
+      left: 0;
+      z-index: -1;
+    }
+
+    .content {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      text-align: center;
+      z-index: 10;
+    }
+
+    .neon-text {
+      font-size: 2.5em;
+      color: #66ccff;
+      text-shadow: 0 0 6px #66ccff, 0 0 12px #335577;
+      margin-bottom: 1rem;
+    }
+
+    button {
+      background-color: transparent;
+      border: 2px solid #66ccff;
+      color: #aad4ff;
+      padding: 10px 30px;
+      font-size: 1em;
+      border-radius: 30px;
+      transition: all 0.3s ease;
+    }
+
+    button:hover {
+      background-color: #66ccff;
+      color: black;
+      box-shadow: 0 0 15px #66ccff;
+    }
+  </style>
 </head>
 <body>
   <canvas id="background"></canvas>
   <div class="content">
     <h1 class="neon-text">Bienvenue dans mon univers</h1>
-    <p>Ingénierie • Amélioration continue • Futur technologique</p>
+    <p>Ingénierie • Innovation • Technologie</p>
     <button onclick="window.location.href='menu.html'">Accéder au menu</button>
   </div>
-  <script src="background.js"></script>
+
+  <script>
+    const canvas = document.getElementById("background");
+    const ctx = canvas.getContext("2d");
+
+    function resizeCanvas() {
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+    }
+
+    resizeCanvas();
+    window.addEventListener("resize", resizeCanvas);
+
+    const lines = [];
+
+    for (let i = 0; i < canvas.width; i += 25) {
+      lines.push({
+        x: i,
+        y: Math.random() * canvas.height,
+        speed: Math.random() * 1.5 + 0.5,
+        direction: Math.random() < 0.5 ? 1 : -1
+      });
+    }
+
+    function draw() {
+      ctx.fillStyle = "rgba(10,15,24,0.2)";
+      ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+      ctx.strokeStyle = "#66ccff";
+      ctx.lineWidth = 1;
+
+      for (let line of lines) {
+        ctx.beginPath();
+        ctx.moveTo(line.x, line.y);
+        ctx.lineTo(line.x, line.y + 25);
+        ctx.stroke();
+
+        line.y += line.speed * line.direction;
+        if (line.y > canvas.height || line.y < 0) {
+          line.y = Math.random() * canvas.height;
+          line.direction *= -1;
+        }
+      }
+
+      requestAnimationFrame(draw);
+    }
+
+    draw();
+  </script>
 </body>
 </html>
