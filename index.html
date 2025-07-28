@@ -3,63 +3,76 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Portfolio Futuriste</title>
+  <title>Accueil Futuriste</title>
   <style>
+    /* --- Style global --- */
     body, html {
       margin: 0;
       padding: 0;
       height: 100vh;
-      overflow: hidden;
       font-family: 'Segoe UI', sans-serif;
-      background-color: #0a0f18;
-      color: #aad4ff;
+      background-color: #0b0f1a;
+      color: #cce6ff;
+      overflow: hidden;
     }
 
-    canvas#background {
+    /* --- Fond animé --- */
+    canvas {
       position: fixed;
       top: 0;
       left: 0;
       z-index: -1;
     }
 
-    .content {
+    /* --- Contenu centré --- */
+    .container {
       position: absolute;
       top: 50%;
       left: 50%;
       transform: translate(-50%, -50%);
       text-align: center;
-      z-index: 10;
+      max-width: 600px;
     }
 
-    .neon-text {
-      font-size: 2.5em;
+    /* --- Texte néon --- */
+    h1 {
+      font-size: 2.8em;
+      margin-bottom: 20px;
       color: #66ccff;
-      text-shadow: 0 0 6px #66ccff, 0 0 12px #335577;
-      margin-bottom: 1rem;
+      text-shadow: 0 0 8px #66ccff, 0 0 20px #003355;
     }
 
+    p {
+      font-size: 1.2em;
+      margin-bottom: 30px;
+      color: #aaccee;
+    }
+
+    /* --- Bouton stylé --- */
     button {
-      background-color: transparent;
+      background: transparent;
       border: 2px solid #66ccff;
-      color: #aad4ff;
-      padding: 10px 30px;
+      color: #cce6ff;
+      padding: 12px 32px;
       font-size: 1em;
-      border-radius: 30px;
+      border-radius: 25px;
+      cursor: pointer;
       transition: all 0.3s ease;
     }
 
     button:hover {
       background-color: #66ccff;
-      color: black;
-      box-shadow: 0 0 15px #66ccff;
+      color: #001622;
+      box-shadow: 0 0 12px #66ccff;
     }
   </style>
 </head>
 <body>
   <canvas id="background"></canvas>
-  <div class="content">
-    <h1 class="neon-text">Bienvenue dans mon univers</h1>
-    <p>Ingénierie • Innovation • Technologie</p>
+
+  <div class="container">
+    <h1>Bienvenue dans mon univers</h1>
+    <p>Ingénieur généraliste • Amélioration continue • Technologies de demain</p>
     <button onclick="window.location.href='menu.html'">Accéder au menu</button>
   </div>
 
@@ -71,23 +84,21 @@
       canvas.width = window.innerWidth;
       canvas.height = window.innerHeight;
     }
-
     resizeCanvas();
     window.addEventListener("resize", resizeCanvas);
 
     const lines = [];
-
-    for (let i = 0; i < canvas.width; i += 25) {
+    for (let i = 0; i < canvas.width; i += 30) {
       lines.push({
         x: i,
         y: Math.random() * canvas.height,
-        speed: Math.random() * 1.5 + 0.5,
+        speed: Math.random() * 1.2 + 0.6,
         direction: Math.random() < 0.5 ? 1 : -1
       });
     }
 
-    function draw() {
-      ctx.fillStyle = "rgba(10,15,24,0.2)";
+    function drawBackground() {
+      ctx.fillStyle = "rgba(11, 15, 26, 0.3)";
       ctx.fillRect(0, 0, canvas.width, canvas.height);
 
       ctx.strokeStyle = "#66ccff";
@@ -96,7 +107,7 @@
       for (let line of lines) {
         ctx.beginPath();
         ctx.moveTo(line.x, line.y);
-        ctx.lineTo(line.x, line.y + 25);
+        ctx.lineTo(line.x, line.y + 30);
         ctx.stroke();
 
         line.y += line.speed * line.direction;
@@ -106,10 +117,10 @@
         }
       }
 
-      requestAnimationFrame(draw);
+      requestAnimationFrame(drawBackground);
     }
 
-    draw();
+    drawBackground();
   </script>
 </body>
 </html>
