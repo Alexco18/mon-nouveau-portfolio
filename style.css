@@ -1,0 +1,54 @@
+body {
+  margin: 0;
+  height: 100vh;
+  font-family: 'Segoe UI', sans-serif;
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: linear-gradient(-45deg, #0f0f0f, #222, #0ff, #00f);
+  background-size: 400% 400%;
+  animation: gradient 15s ease infinite;
+}
+
+@keyframes gradient {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+.container {
+  text-align: center;
+  max-width: 600px;
+  padding: 20px;
+}
+
+.glow {
+  font-size: 2.5em;
+  text-shadow: 0 0 5px #0ff, 0 0 10px #0ff, 0 0 20px #00f;
+  margin-bottom: 20px;
+}
+
+.intro {
+  font-size: 1.2em;
+  margin-bottom: 30px;
+  line-height: 1.5;
+}
+
+.pulse-button {
+  background-color: #00f;
+  color: white;
+  border: none;
+  padding: 15px 30px;
+  font-size: 1em;
+  border-radius: 50px;
+  cursor: pointer;
+  box-shadow: 0 0 10px #00f;
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0% { transform: scale(1); box-shadow: 0 0 10px #00f; }
+  50% { transform: scale(1.05); box-shadow: 0 0 20px #0ff; }
+  100% { transform: scale(1); box-shadow: 0 0 10px #00f; }
+}
