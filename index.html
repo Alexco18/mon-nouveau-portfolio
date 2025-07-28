@@ -5,7 +5,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Accueil Futuriste</title>
   <style>
-    /* --- Style global --- */
     body, html {
       margin: 0;
       padding: 0;
@@ -16,7 +15,7 @@
       overflow: hidden;
     }
 
-    /* --- Fond animé --- */
+    /* --- Canvas animé --- */
     canvas {
       position: fixed;
       top: 0;
@@ -31,12 +30,13 @@
       left: 50%;
       transform: translate(-50%, -50%);
       text-align: center;
-      max-width: 600px;
+      max-width: 700px;
+      width: 90%;
+      white-space: nowrap;
     }
 
-    /* --- Texte néon --- */
     h1 {
-      font-size: 2.8em;
+      font-size: 3em;
       margin-bottom: 20px;
       color: #66ccff;
       text-shadow: 0 0 8px #66ccff, 0 0 20px #003355;
@@ -48,7 +48,6 @@
       color: #aaccee;
     }
 
-    /* --- Bouton stylé --- */
     button {
       background: transparent;
       border: 2px solid #66ccff;
@@ -84,43 +83,43 @@
       canvas.width = window.innerWidth;
       canvas.height = window.innerHeight;
     }
-    resizeCanvas();
     window.addEventListener("resize", resizeCanvas);
+    resizeCanvas();
 
-    const lines = [];
-    for (let i = 0; i < canvas.width; i += 30) {
-      lines.push({
-        x: i,
+    const particles = [];
+    const particleCount = 100;
+    for (let i = 0; i < particleCount; i++) {
+      particles.push({
+        x: Math.random() * canvas.width,
         y: Math.random() * canvas.height,
-        speed: Math.random() * 1.2 + 0.6,
-        direction: Math.random() < 0.5 ? 1 : -1
+        radius: Math.random() * 2 + 1,
+        dx: (Math.random() - 0.5) * 0.5,
+        dy: (Math.random() - 0.5) * 0.5
       });
     }
 
-    function drawBackground() {
-      ctx.fillStyle = "rgba(11, 15, 26, 0.3)";
+    function animate() {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      ctx.fillStyle = "#0b0f1a";
       ctx.fillRect(0, 0, canvas.width, canvas.height);
 
-      ctx.strokeStyle = "#66ccff";
-      ctx.lineWidth = 1;
-
-      for (let line of lines) {
+      for (let p of particles) {
         ctx.beginPath();
-        ctx.moveTo(line.x, line.y);
-        ctx.lineTo(line.x, line.y + 30);
-        ctx.stroke();
+        ctx.arc(p.x, p.y, p.radius, 0, Math.PI * 2);
+        ctx.fillStyle = "#66ccff";
+        ctx.fill();
 
-        line.y += line.speed * line.direction;
-        if (line.y > canvas.height || line.y < 0) {
-          line.y = Math.random() * canvas.height;
-          line.direction *= -1;
-        }
+        p.x += p.dx;
+        p.y += p.dy;
+
+        if (p.x < 0 || p.x > canvas.width) p.dx *= -1;
+        if (p.y < 0 || p.y > canvas.height) p.dy *= -1;
       }
 
-      requestAnimationFrame(drawBackground);
+      requestAnimationFrame(animate);
     }
 
-    drawBackground();
+    animate();
   </script>
 </body>
 </html>
