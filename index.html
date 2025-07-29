@@ -53,35 +53,10 @@
       padding: 1rem;
     }
 
-    .hero-header {
-      width: 100%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      position: relative;
-      margin-bottom: 1rem;
-    }
-
-    .back-button-header {
-      position: absolute;
-      left: 2rem;
-      background: none;
-      border: none;
-      color: #00f7ff;
-      font-size: 2rem;
-      cursor: pointer;
-      transition: transform 0.2s ease, color 0.2s ease;
-    }
-
-    .back-button-header:hover {
-      transform: scale(1.1);
-      color: #00d6e6;
-    }
-
     h1 {
       font-size: 4vw;
       color: #00f7ff;
-      margin: 0;
+      margin-bottom: 1rem;
     }
 
     p {
@@ -106,6 +81,7 @@
       transform: scale(1.05);
     }
 
+    /* Menu Overlay */
     .menu-overlay {
       position: fixed;
       top: 0; left: 0;
@@ -133,6 +109,14 @@
       color: #00f7ff;
       margin-bottom: 2rem;
       text-align: center;
+    }
+
+    .menu-title .triangle-icon {
+      display: inline-block;
+      margin-right: 0.5rem;
+      color: #00f7ff;
+      font-size: 1.5rem;
+      transform: translateY(2px);
     }
 
     .profile-area,
@@ -170,9 +154,8 @@
         padding: 0.6rem 1rem;
       }
 
-      .back-button-header {
-        font-size: 1.5rem;
-        left: 1rem;
+      .menu-title .triangle-icon {
+        font-size: 1.2rem;
       }
     }
 
@@ -191,16 +174,15 @@
   <div class="background" id="background"></div>
 
   <div class="hero" id="accueil">
-    <div class="hero-header">
-      <button class="back-button-header" onclick="document.getElementById('menu').style.display='none'">←</button>
-      <h1>Bienvenue dans mon univers</h1>
-    </div>
+    <h1>Bienvenue dans mon univers</h1>
     <p>Explorez mes projets et mon parcours d’ingénieur en amélioration continue dans un univers technique, créatif et moderne.</p>
     <button onclick="document.getElementById('menu').style.display='flex'">Accéder au Menu</button>
   </div>
 
   <div class="menu-overlay" id="menu">
-    <div class="menu-title">Menu du Portfolio</div>
+    <div class="menu-title">
+      <span class="triangle-icon">▶</span> Menu du Portfolio
+    </div>
 
     <div class="profile-area">
       <button class="menu-button">Mon profil</button>
