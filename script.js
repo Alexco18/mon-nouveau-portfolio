@@ -1,13 +1,24 @@
-// Fond dynamique
 const container = document.getElementById("background");
 const totalLines = 80;
+const totalParticles = 50;
 
+// Lignes animées
 for (let i = 0; i < totalLines; i++) {
   const line = document.createElement("div");
   line.classList.add("line");
   line.style.left = Math.random() * window.innerWidth + "px";
   line.style.animationDelay = Math.random() * 6 + "s";
   container.appendChild(line);
+}
+
+// Particules animées
+for (let i = 0; i < totalParticles; i++) {
+  const particle = document.createElement("div");
+  particle.classList.add("particle");
+  particle.style.left = Math.random() * window.innerWidth + "px";
+  particle.style.top = Math.random() * window.innerHeight + "px";
+  particle.style.animationDelay = Math.random() * 10 + "s";
+  container.appendChild(particle);
 }
 
 // Hauteur dynamique
