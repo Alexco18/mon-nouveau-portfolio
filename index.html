@@ -3,120 +3,126 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Accueil Futuriste</title>
+  <title>Portfolio - Ingénieur en Amélioration Continue</title>
   <style>
-    html, body {
+    @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@500&display=swap');
+
+    body, html {
       margin: 0;
       padding: 0;
-      height: 100vh;
-      font-family: 'Segoe UI', sans-serif;
-      background-color: #0b0f1a;
-      color: #cce6ff;
+      height: 100%;
+      font-family: 'Orbitron', sans-serif;
+      background-color: #0a0a0a;
+      color: #ffffff;
       overflow: hidden;
     }
 
-    canvas {
+    #particles-js {
       position: fixed;
-      top: 0;
-      left: 0;
+      width: 100%;
+      height: 100%;
       z-index: -1;
+      background-color: #0a0a0a;
     }
 
-    .container {
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
+    .hero {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
       text-align: center;
-      max-width: 700px;
-      width: 90%;
-      white-space: nowrap;
+      height: 100vh;
+      padding: 0 2rem;
+      z-index: 1;
     }
 
     h1 {
-      font-size: 3em;
-      margin-bottom: 20px;
-      color: #66ccff;
-      text-shadow: 0 0 8px #66ccff, 0 0 20px #003355;
+      font-size: 3rem;
+      color: #00f7ff;
+      margin-bottom: 1rem;
     }
 
     p {
-      font-size: 1.2em;
-      margin-bottom: 30px;
-      color: #aaccee;
+      font-size: 1.2rem;
+      max-width: 600px;
+      margin-bottom: 2rem;
     }
 
     button {
-      background: transparent;
-      border: 2px solid #66ccff;
-      color: #cce6ff;
-      padding: 12px 32px;
-      font-size: 1em;
-      border-radius: 25px;
+      background-color: #00f7ff;
+      border: none;
+      padding: 1rem 2rem;
+      color: #000;
+      font-weight: bold;
       cursor: pointer;
-      transition: all 0.3s ease;
+      transition: transform 0.2s ease;
+      border-radius: 5px;
     }
 
     button:hover {
-      background-color: #66ccff;
-      color: #001622;
-      box-shadow: 0 0 12px #66ccff;
+      transform: scale(1.05);
     }
   </style>
 </head>
 <body>
-  <canvas id="background"></canvas>
+  <!-- Fond animé -->
+  <div id="particles-js"></div>
 
-  <div class="container">
-    <h1>Bienvenue dans mon univers</h1>
-    <p>Ingénieur généraliste • Amélioration continue • Technologies de demain</p>
-    <button onclick="window.location.href='menu.html'">Accéder au menu</button>
+  <!-- Contenu principal -->
+  <div class="hero">
+    <h1>Bienvenue dans mon univers 👨‍💻</h1>
+    <p>Explorez mes projets et mon parcours d’ingénieur en amélioration continue dans un univers technique, créatif et moderne.</p>
+    <button onclick="location.href='#menu'">Accéder au Menu</button>
   </div>
 
+  <!-- Script Particles.js -->
+  <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
   <script>
-    const canvas = document.getElementById("background");
-    const ctx = canvas.getContext("2d");
-
-    function resizeCanvas() {
-      canvas.width = window.innerWidth;
-      canvas.height = window.innerHeight;
-    }
-    resizeCanvas();
-    window.addEventListener("resize", resizeCanvas);
-
-    const hexSize = 20;
-    let offset = 0;
-
-    function drawHexagon(x, y, size) {
-      ctx.beginPath();
-      for (let i = 0; i < 6; i++) {
-        const angle = (Math.PI / 3) * i;
-        const dx = x + size * Math.cos(angle);
-        const dy = y + size * Math.sin(angle);
-        ctx.lineTo(dx, dy);
-      }
-      ctx.closePath();
-      ctx.strokeStyle = "#244a66";
-      ctx.lineWidth = 0.5;
-      ctx.stroke();
-    }
-
-    function animateGrid() {
-      ctx.fillStyle = "#0b0f1a";
-      ctx.fillRect(0, 0, canvas.width, canvas.height);
-
-      for (let y = -hexSize; y < canvas.height + hexSize; y += hexSize * 1.5) {
-        for (let x = -hexSize; x < canvas.width + hexSize; x += hexSize * Math.sqrt(3)) {
-          const xOffset = (y / (hexSize * 1.5)) % 2 === 0 ? 0 : hexSize * Math.sqrt(3) / 2;
-          drawHexagon(x + xOffset + offset, y, hexSize);
+    particlesJS("particles-js", {
+      particles: {
+        number: { value: 60, density: { enable: true, value_area: 800 } },
+        color: { value: "#00f7ff" },
+        shape: {
+          type: "circle",
+          stroke: { width: 0, color: "#000000" },
+        },
+        opacity: {
+          value: 0.5,
+          random: false,
+          anim: { enable: false, speed: 1, opacity_min: 0.1, sync: false }
+        },
+        size: {
+          value: 3,
+          random: true,
+          anim: { enable: false, speed: 40, size_min: 0.1, sync: false }
+        },
+        line_linked: {
+          enable: true,
+          distance: 150,
+          color: "#00f7ff",
+          opacity: 0.4,
+          width: 1
+        },
+        move: {
+          enable: true,
+          speed: 2,
+          direction: "none",
+          out_mode: "out"
         }
-      }
-
-      offset += 0.2;
-      requestAnimationFrame(animateGrid);
-    }
-
-    animateGrid();
+      },
+      interactivity: {
+        detect_on: "canvas",
+        events: {
+          onhover: { enable: true, mode: "grab" },
+          onclick: { enable: false, mode: "push" },
+          resize: true
+        },
+        modes: {
+          grab: { distance: 150, line_linked: { opacity: 0.5 } }
+        }
+      },
+      retina_detect: true
+    });
   </script>
 </body>
 </html>
