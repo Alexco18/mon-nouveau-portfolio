@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Fond Neon</title>
+  <title>Portfolio - Ingénieur en Amélioration Continue</title>
   <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500&display=swap" rel="stylesheet">
   <style>
     body, html {
@@ -12,6 +12,7 @@
       height: 100%;
       background: radial-gradient(circle at center, #1a1a2e, #0f0f1a);
       font-family: 'Orbitron', sans-serif;
+      color: #ffffff;
       overflow: hidden;
     }
 
@@ -28,18 +29,75 @@
       width: 1px;
       height: 100px;
       background: #00f7ff;
-      opacity: 0.3;
-      animation: moveUp 4s linear infinite;
+      opacity: 0.25;
+      animation: moveUp 6s linear infinite;
     }
 
     @keyframes moveUp {
       0% { transform: translateY(100vh); }
       100% { transform: translateY(-100px); }
     }
+
+    .hero {
+      position: relative;
+      z-index: 1;
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding: 0 2rem;
+    }
+
+    h1 {
+      font-size: 3rem;
+      color: #00f7ff;
+      margin-bottom: 1rem;
+    }
+
+    p {
+      font-size: 1.2rem;
+      max-width: 600px;
+      margin-bottom: 2rem;
+    }
+
+    button {
+      background-color: #00f7ff;
+      border: none;
+      padding: 1rem 2rem;
+      color: #000;
+      font-weight: bold;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: transform 0.2s ease;
+    }
+
+    button:hover {
+      transform: scale(1.05);
+    }
   </style>
 </head>
 <body>
   <div class="background" id="background"></div>
-  <script src="background.js"></script>
+
+  <div class="hero">
+    <h1>Bienvenue dans mon univers</h1>
+    <p>Explorez mes projets et mon parcours d’ingénieur en amélioration continue dans un univers technique, créatif et moderne.</p>
+    <button onclick="location.href='#menu'">Accéder au Menu</button>
+  </div>
+
+  <script>
+    const container = document.getElementById("background");
+    const totalLines = 80;
+
+    for (let i = 0; i < totalLines; i++) {
+      const line = document.createElement("div");
+      line.classList.add("line");
+      line.style.left = Math.random() * window.innerWidth + "px";
+      line.style.animationDelay = Math.random() * 6 + "s";
+      container.appendChild(line);
+    }
+  </script>
 </body>
 </html>
