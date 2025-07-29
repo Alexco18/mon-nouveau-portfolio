@@ -8,32 +8,31 @@
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <!-- Fond animé -->
   <div class="background" id="background"></div>
 
-  <!-- Page d’accueil -->
-  <div class="hero" id="accueil">
+  <div class="hero">
     <h1>Bienvenue dans mon univers</h1>
     <p>Explorez mes projets et mon parcours d’ingénieur en amélioration continue dans un univers technique, créatif et moderne.</p>
     <button onclick="document.getElementById('menu').style.display='flex'">Accéder au Menu</button>
   </div>
 
-  <!-- Menu -->
   <div class="menu-overlay" id="menu">
     <div class="menu-title">Menu du Portfolio</div>
 
-    <div class="profile-area">
-      <button class="menu-button">Mon profil</button>
-    </div>
+    <div class="menu-content">
+      <div class="profile-area">
+        <button class="menu-button">Mon profil</button>
+      </div>
 
-    <div class="projects-area">
-      <button class="menu-button">Mes projets professionnels</button>
-      <button class="menu-button">Mes projets scolaires</button>
-      <button class="menu-button">Mes projets personnels</button>
-    </div>
+      <div class="projects-area">
+        <button class="menu-button">Mes projets professionnels</button>
+        <button class="menu-button">Mes projets scolaires</button>
+        <button class="menu-button">Mes projets personnels</button>
+      </div>
 
-    <div class="back-area">
-      <button class="menu-button" onclick="document.getElementById('menu').style.display='none'">Retour à l’accueil</button>
+      <div class="back-area">
+        <button class="menu-button small" onclick="document.getElementById('menu').style.display='none'">Retour à l’accueil</button>
+      </div>
     </div>
   </div>
 
