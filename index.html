@@ -84,15 +84,18 @@
     .menu-overlay {
       position: fixed;
       top: 0; left: 0;
-      width: 100%; height: 100%;
+      width: 100%;
+      height: 100%;
       background: rgba(10,10,10,0.95);
       backdrop-filter: blur(8px);
       display: none;
       flex-direction: column;
-      justify-content: space-between;
+      justify-content: center;
+      align-items: center;
       padding: 2rem;
       animation: fadeIn 0.6s ease-out forwards;
       z-index: 2;
+      overflow-y: auto;
     }
 
     @keyframes fadeIn {
@@ -103,26 +106,17 @@
     .menu-title {
       font-size: 2rem;
       color: #00f7ff;
+      margin-bottom: 2rem;
       text-align: center;
     }
 
-    .profile-area {
-      position: absolute;
-      top: 2rem;
-      right: 2rem;
-      display: flex;
-      flex-direction: column;
-      gap: 1rem;
-      align-items: flex-end;
-    }
-
+    .profile-area,
     .projects-area {
-      position: absolute;
-      bottom: 2rem;
-      left: 2rem;
       display: flex;
       flex-direction: column;
       gap: 1rem;
+      margin: 1rem;
+      align-items: center;
     }
 
     .menu-button {
@@ -144,6 +138,7 @@
       h1 {
         font-size: 6vw;
       }
+
       .menu-button {
         font-size: 0.9rem;
         padding: 0.6rem 1rem;
@@ -155,15 +150,8 @@
         font-size: 1.5rem;
       }
 
-      .profile-area, .projects-area {
-        position: static;
-        flex-direction: column;
-        align-items: center;
-      }
-
       .menu-overlay {
-        justify-content: center;
-        align-items: center;
+        padding: 1rem;
       }
     }
   </style>
@@ -190,7 +178,7 @@
   </div>
 
   <script>
-    // Animation lignes
+    // Animation des lignes
     const container = document.getElementById("background");
     const totalLines = 80;
     for (let i = 0; i < totalLines; i++) {
@@ -206,10 +194,11 @@
       document.documentElement.style.setProperty('--vh', `${window.innerHeight * 0.01}px`);
     }
     setVH();
+
     window.addEventListener('resize', () => {
       setVH();
 
-      // Réinitialisation visuelle du menu si ouvert
+      // Re-calibrage visuel si menu ouvert
       const menu = document.getElementById('menu');
       if (menu.style.display === 'flex') {
         menu.style.display = 'none';
