@@ -6,6 +6,10 @@
   <title>Portfolio - Ingénieur Futuriste</title>
   <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500&display=swap" rel="stylesheet">
   <style>
+    :root {
+      --vh: 1vh;
+    }
+
     body, html {
       margin: 0;
       padding: 0;
@@ -40,23 +44,24 @@
     .hero {
       position: relative;
       z-index: 1;
-      height: 100vh;
+      min-height: calc(var(--vh, 1vh) * 100);
       display: flex;
       flex-direction: column;
       justify-content: center;
       align-items: center;
       text-align: center;
+      padding: 1rem;
     }
 
     h1 {
-      font-size: 3rem;
+      font-size: 4vw;
       color: #00f7ff;
       margin-bottom: 1rem;
     }
 
     p {
       font-size: 1.2rem;
-      max-width: 600px;
+      max-width: 90%;
       margin-bottom: 2rem;
     }
 
@@ -134,6 +139,33 @@
       background: #00f7ff;
       color: #000;
     }
+
+    @media (max-width: 768px) {
+      h1 {
+        font-size: 6vw;
+      }
+      .menu-button {
+        font-size: 0.9rem;
+        padding: 0.6rem 1rem;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .menu-title {
+        font-size: 1.5rem;
+      }
+
+      .profile-area, .projects-area {
+        position: static;
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .menu-overlay {
+        justify-content: center;
+        align-items: center;
+      }
+    }
   </style>
 </head>
 <body>
@@ -146,7 +178,7 @@
   </div>
 
   <div class="menu-overlay" id="menu">
-    <div class="menu-title">Centre de Navigation</div>
+    <div class="menu-title">Menu du Portfolio</div>
     <div class="profile-area">
       <button class="menu-button">Mon profil</button>
     </div>
@@ -158,9 +190,9 @@
   </div>
 
   <script>
+    // Animation lignes
     const container = document.getElementById("background");
     const totalLines = 80;
-
     for (let i = 0; i < totalLines; i++) {
       const line = document.createElement("div");
       line.classList.add("line");
@@ -168,6 +200,22 @@
       line.style.animationDelay = Math.random() * 6 + "s";
       container.appendChild(line);
     }
+
+    // Ajustement dynamique de la hauteur
+    function setVH() {
+      document.documentElement.style.setProperty('--vh', `${window.innerHeight * 0.01}px`);
+    }
+    setVH();
+    window.addEventListener('resize', () => {
+      setVH();
+
+      // Réinitialisation visuelle du menu si ouvert
+      const menu = document.getElementById('menu');
+      if (menu.style.display === 'flex') {
+        menu.style.display = 'none';
+        setTimeout(() => { menu.style.display = 'flex'; }, 100);
+      }
+    });
   </script>
 </body>
 </html>
