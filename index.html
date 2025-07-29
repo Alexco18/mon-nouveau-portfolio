@@ -5,183 +5,20 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Portfolio - Ingénieur Futuriste</title>
   <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500&display=swap" rel="stylesheet">
-  <style>
-    :root {
-      --vh: 1vh;
-    }
-
-    body, html {
-      margin: 0;
-      padding: 0;
-      height: 100%;
-      font-family: 'Orbitron', sans-serif;
-      background: radial-gradient(circle at center, #1a1a2e, #0f0f1a);
-      color: #ffffff;
-      overflow: hidden;
-    }
-
-    .background {
-      position: fixed;
-      width: 100%;
-      height: 100%;
-      z-index: -1;
-    }
-
-    .line {
-      position: absolute;
-      width: 1px;
-      height: 100px;
-      background: #00f7ff;
-      opacity: 0.25;
-      animation: moveUp 6s linear infinite;
-    }
-
-    @keyframes moveUp {
-      0% { transform: translateY(100vh); }
-      100% { transform: translateY(-100px); }
-    }
-
-    .hero {
-      position: relative;
-      z-index: 1;
-      min-height: calc(var(--vh, 1vh) * 100);
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      text-align: center;
-      padding: 1rem;
-    }
-
-    h1 {
-      font-size: 4vw;
-      color: #00f7ff;
-      margin-bottom: 1rem;
-    }
-
-    p {
-      font-size: 1.2rem;
-      max-width: 90%;
-      margin-bottom: 2rem;
-    }
-
-    button {
-      background-color: #00f7ff;
-      border: none;
-      padding: 1rem 2rem;
-      color: #000;
-      font-weight: bold;
-      border-radius: 5px;
-      cursor: pointer;
-      transition: transform 0.2s ease;
-      font-size: 1.1rem;
-    }
-
-    button:hover {
-      transform: scale(1.05);
-    }
-
-    /* Menu Overlay */
-    .menu-overlay {
-      position: fixed;
-      top: 0; left: 0;
-      width: 100%;
-      height: 100%;
-      background: rgba(10,10,10,0.95);
-      backdrop-filter: blur(8px);
-      display: none;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      padding: 2rem;
-      animation: fadeIn 0.6s ease-out forwards;
-      z-index: 2;
-      overflow-y: auto;
-    }
-
-    @keyframes fadeIn {
-      from { opacity: 0; transform: scale(1.1); }
-      to { opacity: 1; transform: scale(1); }
-    }
-
-    .menu-title {
-      font-size: 2.5rem;
-      color: #00f7ff;
-      margin-bottom: 2rem;
-      text-align: center;
-    }
-
-    .profile-area,
-    .projects-area,
-    .back-area {
-      display: flex;
-      flex-direction: column;
-      gap: 1.5rem;
-      margin: 1rem;
-      align-items: center;
-    }
-
-    .menu-button {
-      background: none;
-      border: 2px solid #00f7ff;
-      color: #00f7ff;
-      padding: 1rem 2.5rem;
-      font-size: 1.3rem;
-      cursor: pointer;
-      transition: all 0.3s ease;
-    }
-
-    .menu-button:hover {
-      background: #00f7ff;
-      color: #000;
-    }
-
-    .back-area .menu-button {
-      font-size: 1rem;
-      padding: 0.7rem 1.5rem;
-      border-width: 1.5px;
-    }
-
-    @media (max-width: 768px) {
-      h1 {
-        font-size: 6vw;
-      }
-
-      button, .menu-button {
-        font-size: 1rem;
-        padding: 0.8rem 1.8rem;
-      }
-
-      .menu-title {
-        font-size: 2rem;
-      }
-    }
-
-    @media (max-width: 480px) {
-      .menu-title {
-        font-size: 1.6rem;
-      }
-
-      .menu-overlay {
-        padding: 1rem;
-      }
-
-      .menu-button {
-        font-size: 0.9rem;
-        padding: 0.6rem 1.2rem;
-      }
-    }
-  </style>
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
+  <!-- Fond animé -->
   <div class="background" id="background"></div>
 
+  <!-- Page d’accueil -->
   <div class="hero" id="accueil">
     <h1>Bienvenue dans mon univers</h1>
     <p>Explorez mes projets et mon parcours d’ingénieur en amélioration continue dans un univers technique, créatif et moderne.</p>
     <button onclick="document.getElementById('menu').style.display='flex'">Accéder au Menu</button>
   </div>
 
+  <!-- Menu -->
   <div class="menu-overlay" id="menu">
     <div class="menu-title">Menu du Portfolio</div>
 
@@ -200,30 +37,6 @@
     </div>
   </div>
 
-  <script>
-    const container = document.getElementById("background");
-    const totalLines = 80;
-    for (let i = 0; i < totalLines; i++) {
-      const line = document.createElement("div");
-      line.classList.add("line");
-      line.style.left = Math.random() * window.innerWidth + "px";
-      line.style.animationDelay = Math.random() * 6 + "s";
-      container.appendChild(line);
-    }
-
-    function setVH() {
-      document.documentElement.style.setProperty('--vh', `${window.innerHeight * 0.01}px`);
-    }
-    setVH();
-
-    window.addEventListener('resize', () => {
-      setVH();
-      const menu = document.getElementById('menu');
-      if (menu.style.display === 'flex') {
-        menu.style.display = 'none';
-        setTimeout(() => { menu.style.display = 'flex'; }, 100);
-      }
-    });
-  </script>
+  <script src="script.js"></script>
 </body>
 </html>
