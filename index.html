@@ -105,18 +105,10 @@
     }
 
     .menu-title {
-      font-size: 2rem;
+      font-size: 2.5rem;
       color: #00f7ff;
       margin-bottom: 2rem;
       text-align: center;
-    }
-
-    .menu-title .triangle-icon {
-      display: inline-block;
-      margin-right: 0.5rem;
-      color: #00f7ff;
-      font-size: 1.5rem;
-      transform: translateY(2px);
     }
 
     .profile-area,
@@ -124,7 +116,7 @@
     .back-area {
       display: flex;
       flex-direction: column;
-      gap: 1rem;
+      gap: 1.5rem;
       margin: 1rem;
       align-items: center;
     }
@@ -133,8 +125,8 @@
       background: none;
       border: 2px solid #00f7ff;
       color: #00f7ff;
-      padding: 0.8rem 1.2rem;
-      font-size: 1rem;
+      padding: 1rem 2.5rem;
+      font-size: 1.3rem;
       cursor: pointer;
       transition: all 0.3s ease;
     }
@@ -144,28 +136,39 @@
       color: #000;
     }
 
+    .back-area .menu-button {
+      font-size: 1rem;
+      padding: 0.7rem 1.5rem;
+      border-width: 1.5px;
+    }
+
     @media (max-width: 768px) {
       h1 {
         font-size: 6vw;
       }
 
       button, .menu-button {
-        font-size: 0.9rem;
-        padding: 0.6rem 1rem;
+        font-size: 1rem;
+        padding: 0.8rem 1.8rem;
       }
 
-      .menu-title .triangle-icon {
-        font-size: 1.2rem;
+      .menu-title {
+        font-size: 2rem;
       }
     }
 
     @media (max-width: 480px) {
       .menu-title {
-        font-size: 1.5rem;
+        font-size: 1.6rem;
       }
 
       .menu-overlay {
         padding: 1rem;
+      }
+
+      .menu-button {
+        font-size: 0.9rem;
+        padding: 0.6rem 1.2rem;
       }
     }
   </style>
@@ -180,9 +183,7 @@
   </div>
 
   <div class="menu-overlay" id="menu">
-    <div class="menu-title">
-      <span class="triangle-icon">▶</span> Menu du Portfolio
-    </div>
+    <div class="menu-title">Menu du Portfolio</div>
 
     <div class="profile-area">
       <button class="menu-button">Mon profil</button>
