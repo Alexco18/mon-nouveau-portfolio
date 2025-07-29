@@ -1,6 +1,6 @@
 const container = document.getElementById("background");
-const totalLines = 80;
-const totalParticles = 50;
+const totalLines = 60;
+const totalParticles = 40;
 
 // Lignes animées
 for (let i = 0; i < totalLines; i++) {
