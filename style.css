@@ -16,30 +16,28 @@ canvas#rainCanvas {
   z-index: -1;
 }
 
+header {
+  margin-top: 80px;
+}
+
 .button-zone {
-  margin-top: 50px;
+  margin-top: 60px;
   display: flex;
   justify-content: center;
+  gap: 30px;
   flex-wrap: wrap;
-  gap: 20px;
 }
 
 .btn {
+  text-decoration: none;
   padding: 15px 30px;
-  border: none;
   border-radius: 8px;
   background-color: #00ffe7;
   color: #000;
   font-weight: bold;
-  cursor: pointer;
   transition: transform 0.2s;
 }
 
 .btn:hover {
   transform: scale(1.05);
-}
-
-.btn.retour {
-  font-size: 0.8em;
-  padding: 10px 20px;
 }
