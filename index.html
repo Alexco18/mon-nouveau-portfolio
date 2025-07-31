@@ -2,38 +2,15 @@
 <html lang="fr">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Portfolio Futuriste</title>
+  <title>Accueil</title>
   <link rel="stylesheet" href="style.css" />
 </head>
-<body>
-  <div id="accueil" class="view active">
-    <div class="dynamic-background"></div>
+<body class="page accueil">
+  <div class="dynamic-bg"></div>
+  <div class="content">
     <h1>Bienvenue dans mon univers</h1>
-    <p>Développeur créatif et passionné</p>
-    <button onclick="showView('menu')">Entrer</button>
+    <p>Créatif. Visionnaire. Connecté.</p>
+    <a href="menu.html" class="btn">🚀 Découvrir</a>
   </div>
-
-  <div id="menu" class="view">
-    <h2>Explore mon monde</h2>
-    <div class="buttons">
-      <button onclick="showPage('profil')">Profil</button>
-      <button onclick="showPage('pro')">Projets pro</button>
-      <button onclick="showPage('scolaire')">Projets scolaires</button>
-      <button onclick="showPage('perso')">Projets perso</button>
-    </div>
-    <button class="back" onclick="showView('accueil')">⬅ Accueil</button>
-  </div>
-
-  <div id="page" class="view">
-    <h3 id="page-title">Titre de la page</h3>
-    <p id="page-description">Description du contenu...</p>
-    <div id="page-content">
-      <!-- espace pour photos ou contenu -->
-    </div>
-    <button class="back" onclick="showView('menu')">⬅ Menu</button>
-  </div>
-
-  <script src="script.js"></script>
 </body>
 </html>
