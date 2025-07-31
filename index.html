@@ -3,37 +3,35 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Portfolio - Ingénieur Futuriste</title>
-  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500&display=swap" rel="stylesheet">
+  <title>Portfolio Futuriste</title>
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <div class="background" id="background"></div>
-
-  <div class="hero">
+  <div id="accueil" class="view active">
+    <div class="dynamic-background"></div>
     <h1>Bienvenue dans mon univers</h1>
-    <p>Explorez mes projets et mon parcours d’ingénieur en amélioration continue dans un univers technique, créatif et moderne.</p>
-    <button onclick="document.getElementById('menu').style.display='flex'">Accéder au Menu</button>
+    <p>Développeur créatif et passionné</p>
+    <button onclick="showView('menu')">Entrer</button>
   </div>
 
-  <div class="menu-overlay" id="menu">
-    <div class="menu-title">Menu du Portfolio</div>
-
-    <div class="menu-content">
-      <div class="profile-area">
-        <button class="menu-button">Mon profil</button>
-      </div>
-
-      <div class="projects-area">
-        <button class="menu-button">Mes projets professionnels</button>
-        <button class="menu-button">Mes projets scolaires</button>
-        <button class="menu-button">Mes projets personnels</button>
-      </div>
-
-      <div class="back-area">
-        <button class="menu-button small" onclick="document.getElementById('menu').style.display='none'">Retour à l’accueil</button>
-      </div>
+  <div id="menu" class="view">
+    <h2>Explore mon monde</h2>
+    <div class="buttons">
+      <button onclick="showPage('profil')">Profil</button>
+      <button onclick="showPage('pro')">Projets pro</button>
+      <button onclick="showPage('scolaire')">Projets scolaires</button>
+      <button onclick="showPage('perso')">Projets perso</button>
     </div>
+    <button class="back" onclick="showView('accueil')">⬅ Accueil</button>
+  </div>
+
+  <div id="page" class="view">
+    <h3 id="page-title">Titre de la page</h3>
+    <p id="page-description">Description du contenu...</p>
+    <div id="page-content">
+      <!-- espace pour photos ou contenu -->
+    </div>
+    <button class="back" onclick="showView('menu')">⬅ Menu</button>
   </div>
 
   <script src="script.js"></script>
