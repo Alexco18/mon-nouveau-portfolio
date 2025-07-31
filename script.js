@@ -1,37 +1,16 @@
-const container = document.getElementById("background");
-const totalLines = 60;
-const totalParticles = 40;
-
-// Lignes animées
-for (let i = 0; i < totalLines; i++) {
-  const line = document.createElement("div");
-  line.classList.add("line");
-  line.style.left = Math.random() * window.innerWidth + "px";
-  line.style.animationDelay = Math.random() * 6 + "s";
-  container.appendChild(line);
+function showView(id) {
+  document.querySelectorAll('.view').forEach(v => v.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
 }
 
-// Particules animées
-for (let i = 0; i < totalParticles; i++) {
-  const particle = document.createElement("div");
-  particle.classList.add("particle");
-  particle.style.left = Math.random() * window.innerWidth + "px";
-  particle.style.top = Math.random() * window.innerHeight + "px";
-  particle.style.animationDelay = Math.random() * 10 + "s";
-  container.appendChild(particle);
+function showPage(type) {
+  showView('page');
+  const title = {
+    profil: 'Mon Profil',
+    pro: 'Mes Projets Pro',
+    scolaire: 'Projets Scolaires',
+    perso: 'Projets Perso'
+  };
+  document.getElementById('page-title').textContent = title[type];
+  document.getElementById('page-description').textContent = `Contenu de la section "${title[type]}" ici.`;
 }
-
-// Hauteur dynamique
-function setVH() {
-  document.documentElement.style.setProperty('--vh', `${window.innerHeight * 0.01}px`);
-}
-setVH();
-
-window.addEventListener('resize', () => {
-  setVH();
-  const menu = document.getElementById('menu');
-  if (menu.style.display === 'flex') {
-    menu.style.display = 'none';
-    setTimeout(() => { menu.style.display = 'flex'; }, 100);
-  }
-});
