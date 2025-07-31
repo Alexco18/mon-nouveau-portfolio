@@ -2,32 +2,36 @@
 <html lang="fr">
 <head>
   <meta charset="UTF-8" />
-  <title>Projet</title>
+  <title>Détail</title>
   <link rel="stylesheet" href="style.css" />
   <script>
     window.onload = function () {
       const params = new URLSearchParams(location.search);
       const type = params.get("type");
-      const titleMap = {
+      const titles = {
         profil: "Mon Profil",
         pro: "Mes Projets Pro",
         scolaire: "Projets Scolaires",
         perso: "Projets Perso"
       };
-      document.getElementById("title").textContent = titleMap[type];
-      document.getElementById("desc").textContent = `Contenu pour ${titleMap[type]}`;
+      document.getElementById("page-title").textContent = titles[type] || "Contenu";
+      document.getElementById("page-desc").textContent = `Voici quelques informations à propos de ${titles[type] || 'cette section'}.`;
     };
   </script>
 </head>
-<body class="page projet">
-  <div class="dynamic-bg"></div>
-  <div class="content">
-    <h3 id="title">Titre</h3>
-    <p id="desc">Description...</p>
-    <div class="images">
-      <!-- Tu peux ajouter des images ici -->
+<body>
+  <canvas id="rainCanvas"></canvas>
+
+  <section class="container">
+    <h3 id="page-title">Titre</h3>
+    <p id="page-desc">Description...</p>
+    <div class="content-block">
+      <!-- Photos, textes, autres éléments ici -->
+      <p>🔧 Contenu à personnaliser selon la section choisie.</p>
     </div>
-    <a href="menu.html" class="back">⬅ Menu</a>
-  </div>
+    <a href="menu.html" class="btn small">⬅ Retour au menu</a>
+  </section>
+
+  <script src="script.js"></script>
 </body>
 </html>
