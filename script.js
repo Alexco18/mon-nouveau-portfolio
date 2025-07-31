@@ -1,13 +1,14 @@
 const canvas = document.getElementById("rainCanvas");
 const ctx = canvas.getContext("2d");
+
 canvas.width = window.innerWidth;
 canvas.height = window.innerHeight;
 
-const drops = Array(200).fill().map(() => ({
+const drops = Array(150).fill().map(() => ({
   x: Math.random() * canvas.width,
   y: Math.random() * canvas.height,
-  length: Math.random() * 20 + 10,
-  speed: Math.random() * 1.5 + 0.5,
+  length: Math.random() * 30 + 10,
+  speed: Math.random() * 1 + 0.3,
 }));
 
 function draw() {
@@ -31,3 +32,8 @@ function draw() {
 }
 
 draw();
+
+window.addEventListener('resize', () => {
+  canvas.width = window.innerWidth;
+  canvas.height = window.innerHeight;
+});
