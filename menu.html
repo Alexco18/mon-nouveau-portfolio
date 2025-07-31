@@ -5,17 +5,21 @@
   <title>Menu</title>
   <link rel="stylesheet" href="style.css" />
 </head>
-<body class="page menu">
-  <div class="dynamic-bg"></div>
-  <div class="content">
-    <h2>Explore mon monde</h2>
-    <div class="buttons">
+<body>
+  <canvas id="rainCanvas"></canvas>
+
+  <section class="container">
+    <h2>Mon univers</h2>
+    <p>Choisis une section à explorer</p>
+    <div class="button-zone">
       <a href="page.html?type=profil" class="btn">Profil</a>
       <a href="page.html?type=pro" class="btn">Projets Pro</a>
       <a href="page.html?type=scolaire" class="btn">Projets Scolaires</a>
       <a href="page.html?type=perso" class="btn">Projets Perso</a>
     </div>
-    <a href="index.html" class="back">⬅ Retour</a>
-  </div>
+    <a href="index.html" class="btn small">⬅ Retour à l’accueil</a>
+  </section>
+
+  <script src="script.js"></script>
 </body>
 </html>
