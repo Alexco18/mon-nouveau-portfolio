@@ -3,41 +3,46 @@ body {
   font-family: 'Poppins', sans-serif;
   background: #000;
   color: #fff;
-  text-align: center;
   overflow: hidden;
+  text-align: center;
 }
 
 canvas#rainCanvas {
   position: fixed;
   top: 0;
   left: 0;
-  width: 100%;
-  height: 100%;
+  width: 100vw;
+  height: 100vh;
   z-index: -1;
 }
 
-header {
-  margin-top: 80px;
+.container {
+  padding: 80px 20px;
 }
 
 .button-zone {
-  margin-top: 60px;
   display: flex;
   justify-content: center;
-  gap: 30px;
   flex-wrap: wrap;
+  gap: 20px;
+  margin-top: 30px;
 }
 
 .btn {
   text-decoration: none;
   padding: 15px 30px;
-  border-radius: 8px;
   background-color: #00ffe7;
   color: #000;
   font-weight: bold;
+  border-radius: 8px;
   transition: transform 0.2s;
 }
 
 .btn:hover {
   transform: scale(1.05);
+}
+
+.btn.small {
+  font-size: 0.85em;
+  padding: 10px 20px;
 }
