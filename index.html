@@ -2,15 +2,28 @@
 <html lang="fr">
 <head>
   <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Accueil</title>
   <link rel="stylesheet" href="style.css" />
 </head>
-<body class="page accueil">
-  <div class="dynamic-bg"></div>
-  <div class="content">
-    <h1>Bienvenue dans mon univers</h1>
-    <p>Créatif. Visionnaire. Connecté.</p>
-    <a href="menu.html" class="btn">🚀 Découvrir</a>
-  </div>
+<body>
+
+  <!-- Canvas pour fond animé -->
+  <canvas id="rainCanvas"></canvas>
+
+  <!-- En-tête (sans logo fusée) -->
+  <header>
+    <h1>Bienvenue sur ma page</h1>
+  </header>
+
+  <!-- Boutons -->
+  <section class="button-zone">
+    <button class="btn normal">Projet 1</button>
+    <button class="btn normal">Projet 2</button>
+    <button class="btn retour">Retour</button>
+    <button class="btn retour">Accueil</button>
+  </section>
+
+  <script src="script.js"></script>
 </body>
 </html>
